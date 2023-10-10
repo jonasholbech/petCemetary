@@ -10,3 +10,4 @@ document.querySelector("button").addEventListener("click", () => {
   init();
 });
 init();
+console.log(test);
