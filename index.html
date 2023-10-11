@@ -7,7 +7,29 @@
   </head>
   <body>
     <h1>Pet Cemetary</h1>
-    <button>Slet et dyr</button>
+    <main>
+      <section class="pets"></section>
+    </main>
+    <template>
+      <article>
+        <h2>Fluffy</h2>
+        <p>Status: <span class="status"></span></p>
+        <p>
+          <span class="species">Hund</span> -
+          <span class="race">Golden Retriever</span>
+        </p>
+        <div class="actions">
+          <button data-id="15" data-action="delete">Slet</button>
+          <button data-id="15" data-action="update">Opdater</button>
+        </div>
+      </article>
+    </template>
+    <style>
+      .pets {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 150px);
+      }
+    </style>
     <script type="module" src="index.js"></script>
   </body>
 </html>
