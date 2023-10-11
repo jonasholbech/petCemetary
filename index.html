@@ -4,32 +4,180 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="styles/index.css" />
   </head>
   <body>
-    <h1>Pet Cemetary</h1>
-    <main>
+    <header>
+      <div class="content">
+        <h1><span class="text-gradient">Pet</span> sematary</h1>
+        <p>
+          We keep track of our pets so you are able to find just what you’re
+          looking for.
+        </p>
+        <a href="#main">Add your pet</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <form>
+        <div class="form-group">
+          <label for="name"
+            >Name
+            <span class="hint">Enter the pets name</span>
+          </label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            required
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="dob"
+            >Date of Birth
+            <span class="hint">The pets date of birth</span>
+          </label>
+          <input id="dob" type="date" name="dob" required />
+        </div>
+
+        <div class="form-group">
+          <label for="species">
+            Species
+            <span class="hint">Enter a species</span>
+          </label>
+          <input type="text" id="species" name="species" list="s" required />
+          <datalist id="s">
+            <option value="Dog"></option>
+            <option value="Cat"></option>
+            <option value="Snake"></option>
+            <option value="Build-a-bear"></option>
+            <option value="Squirrel"></option>
+          </datalist>
+        </div>
+
+        <div class="form-group">
+          <label for="race">
+            Race
+            <span class="hint">Enter a race</span>
+          </label>
+          <input type="text" id="race" name="race" list="r" />
+          <datalist id="r">
+            <option value="Other"></option>
+          </datalist>
+        </div>
+
+        <div class="form-group range">
+          <label for="activity_level">Activity Level</label>
+          <div class="range-wrap" data-level-min="Low" data-level-max="High">
+            <input
+              type="range"
+              step="1"
+              min="1"
+              max="5"
+              value="3"
+              list="al"
+              id="activity_level"
+              name="activityLevel"
+            />
+            <datalist id="al">
+              <option value="1"></option>
+              <option value="2"></option>
+              <option value="3"></option>
+              <option value="4"></option>
+              <option value="5"></option>
+            </datalist>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="traits">
+            Traits
+            <span class="hint">Enter one trait per line</span>
+          </label>
+          <textarea name="traits" id="traits" required></textarea>
+        </div>
+
+        <div role="group" aria-labelledby="is-alive" class="is-alive">
+          <h2 id="is-alive" class="legend">Is your pet alive?</h2>
+          <div class="controls">
+            <label for="yes">
+              <input id="yes" type="radio" name="isAlive" value="yes" />
+              Yes
+            </label>
+            <label for="no">
+              <input id="no" type="radio" name="isAlive" value="no" checked />
+              No
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="image"
+            >Picture
+            <span class="hint">Provide a url</span>
+          </label>
+          <input id="image" type="text" name="image" required />
+        </div>
+
+        <button data-add class="btn">Add pet</button>
+      </form>
       <section class="pets"></section>
     </main>
     <template>
-      <article>
-        <h2>Fluffy</h2>
-        <p>Status: <span class="status"></span></p>
-        <p>
-          <span class="species">Hund</span> -
-          <span class="race">Golden Retriever</span>
-        </p>
+      <article class="card">
+        <header>
+          <div class="header-content">
+            <h2><span data-name>Fluffy</span>, <span data-age>4 yrs</span></h2>
+            <div>
+              <dl>
+                <div>
+                  <dt class="visually-hidden">Species</dt>
+                  <dd data-species>Dog</dd>
+                </div>
+              </dl>
+              <dl>
+                <div>
+                  <dt class="visually-hidden">Race</dt>
+                  <dd data-race>Golden Retriever</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          <p class="status">
+            <span class="visually-hidden">Status: </span
+            ><span data-status>Alive</span>
+          </p>
+          <img
+            data-img
+            src="https://images.unsplash.com/photo-1625794084867-8ddd239946b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80"
+            alt=""
+          />
+        </header>
+        <dl class="traits-list" data-traits>
+          <dt class="visually-hidden">Traits</dt>
+          <dd>Lazy</dd>
+          <dd>Fun</dd>
+          <dd>Weird</dd>
+        </dl>
+        <section>
+          <h3>Activity Level</h3>
+          <meter
+            data-activity-level
+            min="0"
+            max="5"
+            low="0"
+            high="5"
+            value="3"
+          ></meter>
+        </section>
         <div class="actions">
           <button data-id="15" data-action="delete">Slet</button>
           <button data-id="15" data-action="update">Opdater</button>
         </div>
       </article>
     </template>
-    <style>
-      .pets {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 150px);
-      }
-    </style>
     <script type="module" src="index.js"></script>
   </body>
 </html>

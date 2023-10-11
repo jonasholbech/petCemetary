@@ -1,4 +1,8 @@
 import { getPets, deletePet, updatePet } from "./utils/petsdb.js";
+import { rangeIntensityChanger, autoExpandTextarea } from "./utils/helpers.js";
+
+rangeIntensityChanger();
+autoExpandTextarea();
 
 async function showPets() {
   const pets = await getPets();
@@ -8,10 +12,13 @@ async function showPets() {
   pets.forEach((pet) => {
     const template = document.querySelector("template").content;
     const copy = template.cloneNode(true);
-    copy.querySelector("h2").textContent = pet.name;
-    copy.querySelector(".species").textContent = pet.species;
-    copy.querySelector(".race").textContent = pet.race;
-    copy.querySelector(".status").textContent = pet.isAlive;
+    copy.querySelector("[data-name]").textContent = pet.name;
+    copy.querySelector("[data-species]").textContent = pet.species;
+    copy.querySelector("[data-race]").textContent = pet.race;
+    copy.querySelector("[data-status]").textContent = pet.isAlive
+      ? "Alive"
+      : "Dead";
+    copy.querySelector(".status").dataset.alive = pet.isAlive;
     const deleteButton = copy.querySelector("button[data-action='delete']");
     deleteButton.dataset.id = pet.id;
     const updateButton = copy.querySelector("button[data-action='update']");
