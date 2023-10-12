@@ -4,7 +4,7 @@ header:is(body > *) {
     flex-wrap: wrap-reverse;
     gap: 2rem;
     align-items: center;
-    background: linear-gradient(90deg in oklab, #000 30%, #0000 70%),
+    background: linear-gradient(90deg, #000 30%, #0000 70%),
         url(../imgs/ps3.webp) 70% 100% / contain no-repeat,
         #000;
     padding-inline: max(2rem, (100% - 1200px) / 2);
@@ -37,7 +37,7 @@ h1 {
 }
 
 .text-gradient {
-    background: linear-gradient(90deg in oklab, oklch(0.65 0.3 29.57), oklch(0.28 0.12 31.22));
+    background: linear-gradient(90deg, oklch(0.65 0.3 29.57), oklch(0.28 0.12 31.22));
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
