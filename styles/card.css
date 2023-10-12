@@ -30,6 +30,7 @@
   .header-content {
     padding: 1rem 1.2rem 0.5rem;
     color: #fff;
+    background: rgba(0, 0, 0, 0.3);
     background: linear-gradient(in oklab, #0000, #000a);
   }
 }
@@ -67,7 +68,7 @@
 .card h2 {
   line-height: 1.125;
   font-size: var(--font-base);
-  text-shadow: #000 1px 10px 10px;
+
   & span:last-of-type {
     font-weight: 400;
   }
