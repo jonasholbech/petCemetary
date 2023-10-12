@@ -19,6 +19,20 @@ async function showPets() {
       ? "Alive"
       : "Dead";
     copy.querySelector(".status").dataset.alive = pet.isAlive;
+    if (pet.image) {
+      copy.querySelector("img").src = pet.image;
+    }
+    /*
+<dl class="traits-list" data-traits>
+          <dt class="visually-hidden">Traits</dt>
+          <dd>Lazy</dd>
+          <dd>Fun</dd>
+          <dd>Weird</dd>
+        </dl>
+*/
+    copy.querySelector(".traits-list").innerHTML += pet.traits
+      .map((trait) => `<dd>${trait}</dd>`)
+      .join("");
     const deleteButton = copy.querySelector("button[data-action='delete']");
     deleteButton.dataset.id = pet.id;
     const updateButton = copy.querySelector("button[data-action='update']");
