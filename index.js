@@ -19,7 +19,7 @@ async function showPets() {
       ? "I Live"
       : "Død";
     copy.querySelector("[data-age] span").textContent =
-      pet.dob.slice(0, 4) - new Date().getFullYear();
+      new Date().getFullYear() - pet.dob.slice(0, 4);
     copy.querySelector(".status").dataset.alive = pet.isAlive;
     if (pet.image) {
       copy.querySelector("img").src = pet.image;
