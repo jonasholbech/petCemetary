@@ -41,7 +41,7 @@ export async function deletePet(id) {
   return data;
 }
 
-export async function addPet() {
+export async function addPet(data) {
   let headersList = {
     apikey:
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV3cndwdGlib3RseGx2Y2RlaWN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjQ3OTI4MDYsImV4cCI6MTk4MDM2ODgwNn0.FuHj1T6qJO-wQ_aWaaXNFVfZPG45FsnE3RvHd3PGQmA",
@@ -50,11 +50,7 @@ export async function addPet() {
     "Content-Type": "application/json",
   };
 
-  let bodyContent = JSON.stringify({
-    name: "Dr. Oetker",
-    isAlive: false,
-    traits: ["Hvid", "Hurtig", "Død"],
-  });
+  let bodyContent = JSON.stringify(data);
 
   let response = await fetch(
     "https://uwrwptibotlxlvcdeicv.supabase.co/rest/v1/pets",
@@ -65,8 +61,8 @@ export async function addPet() {
     }
   );
 
-  let data = await response.json();
-  return data;
+  let answer = await response.json();
+  return answer;
 }
 
 export async function updatePet(id, nextState) {

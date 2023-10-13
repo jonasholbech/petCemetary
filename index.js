@@ -1,4 +1,4 @@
-import { getPets, deletePet, updatePet } from "./utils/petsdb.js";
+import { getPets, deletePet, updatePet, addPet } from "./utils/petsdb.js";
 import { rangeIntensityChanger, autoExpandTextarea } from "./utils/helpers.js";
 
 rangeIntensityChanger();
@@ -48,3 +48,30 @@ async function showPets() {
 }
 
 showPets();
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", async (e) => {
+  console.log("submitted");
+  e.preventDefault();
+  const formData = new FormData(form);
+
+  let alive = true;
+  if (formData.get("isAlive") == "no") {
+    alive = false;
+  }
+
+  const newAnimal = {
+    name: formData.get("name"),
+    race: formData.get("race"),
+    species: formData.get("species"),
+    dob: formData.get("dob"),
+    activityLevel: formData.get("activityLevel"),
+    isAlive: alive,
+    traits: formData.get("traits").split("\n"),
+    image: formData.get("image"),
+  };
+  console.log("mit objekt:", newAnimal);
+  await addPet(newAnimal);
+  showPets();
+});
